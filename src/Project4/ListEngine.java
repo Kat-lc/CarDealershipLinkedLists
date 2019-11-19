@@ -99,11 +99,11 @@ public class ListEngine extends AbstractListModel {
             Truck Truck2 = new Truck(temp5,"F250",42000,"LX",false);
             Truck Truck3 = new Truck(temp6,"F350",2000,"EX",true);
 
+            add(Truck1);
             add(Car1);
+            add(Truck2);
             add(Car2);
             add(Car3);
-            add(Truck1);
-            add(Truck2);
             add(Truck3);
 
             System.out.println(listAutos.size());
