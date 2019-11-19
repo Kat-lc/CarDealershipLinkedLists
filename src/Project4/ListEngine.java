@@ -106,6 +106,9 @@ public class ListEngine extends AbstractListModel {
             add(Truck2);
             add(Truck3);
 
+            System.out.println(listAutos.size());
+            System.out.println(listAutos.size());
+
 
         } catch (ParseException e) {
             throw new RuntimeException("Error in testing, creation of list");
