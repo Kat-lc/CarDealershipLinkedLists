@@ -34,8 +34,20 @@ public class MySingleLinkedList implements Serializable
         //  followed by (second) List all Trucks in bought by order.
         if(top == null)
             tail = top = new Node (s,null);
-        else
-            top = new Node(s, top);
+        else {
+            Node temp = top;
+            while (temp.getNext() != null && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) < 0)
+                    temp = temp.getNext();
+            if(temp == top && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
+                top = new Node(s, top);
+            else {
+//                Auto temp1 = temp.getData();
+//                temp.setData(s);
+//                temp = new Node(temp1, )
+                temp.setNext(new Node(s, temp.getNext()));
+            }
+
+        }
     }
 
 
