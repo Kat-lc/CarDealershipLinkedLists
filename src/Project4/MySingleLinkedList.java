@@ -25,6 +25,7 @@ public class MySingleLinkedList implements Serializable
     public void add(Auto s) {
         //  Order is: (First) List all Cars in bought by date order
         //  followed by (second) List all Trucks in bought by order.
+        
 
     }
 
