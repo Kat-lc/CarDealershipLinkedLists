@@ -97,7 +97,7 @@ public class ListEngine extends AbstractListModel {
             Car Car3 = new Car(temp3, "Focus", 19000,"EX", true);
             Truck Truck1 = new Truck(temp4,"F150",12000,"LX",false);
             Truck Truck2 = new Truck(temp5,"F250",42000,"LX",false);
-            Truck Truck3 = new Truck(temp1,"F350",2000,"EX",true);
+            Truck Truck3 = new Truck(temp6,"F350",2000,"EX",true);
 
             add(Car1);
             add(Car2);
@@ -105,6 +105,9 @@ public class ListEngine extends AbstractListModel {
             add(Truck1);
             add(Truck2);
             add(Truck3);
+
+            System.out.println(listAutos.size());
+            System.out.println(listAutos.size());
 
 
         } catch (ParseException e) {
