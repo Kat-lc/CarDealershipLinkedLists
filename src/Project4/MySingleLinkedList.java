@@ -61,15 +61,6 @@ public class MySingleLinkedList implements Serializable
                 temp.setNext(new Node(s, temp.getNext()));
 
         }
-
-//            Node temp = top;
-//            while (temp.getNext() != null && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) < 0)
-//                temp = temp.getNext();
-//            if (temp == top && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
-//                top = new Node(s, top);
-//            else {
-//                temp.setNext(new Node(s, temp.getNext()));
-//            }
     }
 
 
