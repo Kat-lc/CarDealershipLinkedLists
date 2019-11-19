@@ -66,8 +66,27 @@ public class MySingleLinkedList implements Serializable
 
 
     public Auto remove(int index) {
+        //Case 0: No list
+        if (top == null)
+            return null;
 
-        return null;
+        //Case 1: Out of range
+        if (index < 0 || index >= size())
+            return null;
+
+        //Case 2: Removes top element
+        if (index == 0) {
+            top = top.getNext();
+            return top.getData();
+        }
+
+        //Case 3: Removes at index
+        Node temp = top;
+        for (int i = 0; i < index - 1; i++)
+            temp = temp.getNext();
+
+        temp.setNext(temp.getNext().getNext());
+        return temp.getData();
     }
 
     public Auto get(int index) {
