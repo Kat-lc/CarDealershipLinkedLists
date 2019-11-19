@@ -108,11 +108,8 @@ public class ListEngine extends AbstractListModel {
 
             System.out.println(listAutos.size());
             System.out.println(listAutos.size());
-
-
         } catch (ParseException e) {
             throw new RuntimeException("Error in testing, creation of list");
         }
-
     }
 }
