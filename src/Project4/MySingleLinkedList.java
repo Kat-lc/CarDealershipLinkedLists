@@ -33,7 +33,6 @@ public class MySingleLinkedList implements Serializable
     public void add(Auto s) {
         //  Order is: (First) List all Cars in bought by date order
         //  followed by (second) List all Trucks in bought by order.'
-
         // Case 0: List doesn't exist, tail and top point to new node containing 's'
         if (top == null)
             tail = top = new Node(s, null);
