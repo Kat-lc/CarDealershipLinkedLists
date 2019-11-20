@@ -32,10 +32,12 @@ public class MySingleLinkedList implements Serializable
 
     public void add(Auto s) {
         //  Order is: (First) List all Cars in bought by date order
-        //  followed by (second) List all Trucks in bought by order.
+        //  followed by (second) List all Trucks in bought by order.'
+
+        // Case 0: List doesn't exist, tail and top point to new node containing 's'
         if (top == null)
             tail = top = new Node(s, null);
-        //Case 2: s is a car
+            //Case 1: If 's' is a car
         else if (s instanceof Car) {
             Node temp = top;
             while (temp.getNext() != null && temp.getNext().getData() instanceof Car)
@@ -49,17 +51,19 @@ public class MySingleLinkedList implements Serializable
                 top = new Node(s, top);
             else
                 temp.setNext(new Node(s, temp.getNext()));
+            // Case 2: If 's' is a Truck
         } else {
             Node temp = top;
-            while(temp.getNext() != null && temp.getNext().getData() instanceof Car)
-                temp = temp.getNext();
-            while(temp.getNext() != null && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) < 0)
-                temp = temp.getNext();
-            if (temp == top && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0 && temp.getData() instanceof Truck)
+            while(temp.getNext() != null) {
+                if(temp.getNext().getData() instanceof Truck && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
+                    break;
+                else
+                    temp = temp.getNext();
+            }
+            if(temp == top && temp.getData() instanceof Truck)
                 top = new Node(s, top);
             else
                 temp.setNext(new Node(s, temp.getNext()));
-
         }
     }
 
