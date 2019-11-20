@@ -48,6 +48,9 @@ public class GUICarDealer extends JFrame implements ActionListener {
     /** Scroll pane */
     //private JScrollPane scrollList;
 
+    //Undo button
+    private JButton undo;
+
     /*****************************************************************
      *
      * A constructor that starts a new GUI1024 for the rental store
@@ -63,6 +66,7 @@ public class GUICarDealer extends JFrame implements ActionListener {
         saveSerItem = new JMenuItem("Save File");
         boughtCarItem = new JMenuItem("Bought a Car");
         boughtTruckItem = new JMenuItem("Bought a Truck");
+        undo = new JButton("Undo");
 
         soldItem = new JMenuItem("Sold Car or Truck");
 
@@ -85,6 +89,7 @@ public class GUICarDealer extends JFrame implements ActionListener {
         boughtCarItem.addActionListener(this);
         boughtTruckItem.addActionListener(this);
         soldItem.addActionListener(this);
+        undo.addActionListener(this);
 
         setJMenuBar(menus);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,6 +100,7 @@ public class GUICarDealer extends JFrame implements ActionListener {
         JScrollPane scrollList = new JScrollPane(jListArea);
         scrollList.setPreferredSize(new Dimension(800, 300));
         panel.add(scrollList);
+        panel.add(undo);
 
         add(panel, BorderLayout.CENTER);
 
@@ -169,6 +175,10 @@ public class GUICarDealer extends JFrame implements ActionListener {
                             " dollars");
                 }
             }
+        }
+
+        if(undo == e.getSource()){
+            new GUICarDealer();
         }
     }
 
