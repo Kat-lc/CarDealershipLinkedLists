@@ -77,7 +77,7 @@ public class MySingleLinkedList implements Serializable
         //Case 2: Removes top element
         if (index == 0) {
             top = top.getNext();
-            return top.getData();
+            return get(0);
         }
 
         //Case 3: Removes at index
@@ -86,7 +86,7 @@ public class MySingleLinkedList implements Serializable
             temp = temp.getNext();
 
         temp.setNext(temp.getNext().getNext());
-        return temp.getData();
+        return get(index-1);
     }
 
     public Auto get(int index) {
