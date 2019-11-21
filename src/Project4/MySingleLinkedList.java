@@ -95,7 +95,7 @@ public class MySingleLinkedList implements Serializable
     public Auto get(int index) {
         if(top == null)
             return null;
-        else if(index < 0 || index > size)
+        else if(index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         else {
             Node temp = top;
@@ -109,6 +109,15 @@ public class MySingleLinkedList implements Serializable
         String list = "";
 
         return list;
+    }
+
+    public void display(){
+        Node temp = top;
+        System.out.println("------------------------");
+        while (temp != null) {
+            System.out.println(temp.getData());
+            temp = temp.getNext();
+        }
     }
 
 
