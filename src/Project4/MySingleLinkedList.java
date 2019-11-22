@@ -2,7 +2,7 @@ package Project4;
 
 import java.io.Serializable;
 
-public class MySingleLinkedList <E> implements Serializable
+public class MySingleLinkedList implements Serializable
 {
     private Node top;
     private Node tail;
