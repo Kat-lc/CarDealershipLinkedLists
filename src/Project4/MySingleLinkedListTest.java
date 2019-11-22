@@ -236,13 +236,39 @@ public class MySingleLinkedListTest {
         assertEquals("F350", list.get(0).getAutoName());
         list.remove(0);
         assertEquals(0, list.size());
+        assertEquals(list.remove(0), null);
+        list.add(car1);
+        assertEquals(list.remove(-1), null);
     }
 
+    // Checks if list is empty
     @Test
     public void get() {
+        list.clear();
+        assertEquals(list.get(0), null);
+    }
+
+    // Checks if index is out of bounds
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void get1() {
+        list.clear();
+        list.add(car1);
+
+        assertEquals(list.get(-1), null);
     }
 
     @Test
-    public void display() {
+    public void toStringTest() {
+        list.clear();
+        String expected = "";
+        assertEquals(list.toString(), expected);
+    }
+    @Test
+    public void toStringTest2() {
+        list.clear();
+        list.add(car1);
+        String expected = "";
+        expected = "\n" + list.get(0);
+        assertTrue(expected.equals(list.toString()));
     }
 }
