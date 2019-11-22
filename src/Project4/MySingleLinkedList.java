@@ -2,18 +2,48 @@ package Project4;
 
 import java.io.Serializable;
 
+/*********************************************************************
+ * A car dealership program that allows you to purchase vehicles for
+ * your inventory and sell to customers. This program utilizes Linked
+ * Lists for storing of inventory.
+ *
+ * @author Katie Cussans, Jason Kaip
+ * @version Fall 2019
+ ********************************************************************/
+
 public class MySingleLinkedList implements Serializable
 {
+    /**
+     * Node that always points to top of the list.
+     */
     private Node top;
+
+    /**
+     * Node that always points to bottom of list.
+     */
     private Node tail;
 
+    /**
+     * Size of Linked List
+     */
     public int size;
 
+    /*********************************************************************
+     * Constructor creates linked list by setting top pointer to null and
+     * size of list to zero.
+     *
+     * @return None.
+     ********************************************************************/
     public MySingleLinkedList() {
         top = null;
         size = 0;
     }
 
+    /*********************************************************************
+     * Retrieves the size of the linked list.
+     *
+     * @return count Number of elements in list.
+     ********************************************************************/
     public int size() {
         int count = 0;
         Node temp = top;
@@ -25,11 +55,22 @@ public class MySingleLinkedList implements Serializable
         return count;
     }
 
+    /*********************************************************************
+     * Clears linked list by resetting top pointer to null and size to 0.
+     *
+     * @return None.
+     ********************************************************************/
     public void clear () {
         top = null;
         this.size = 0;
     }
 
+    /*********************************************************************
+     * Adds a vehicle to the list in the appropriate sorted position.
+     *
+     * @param s The vehicle to add to the list.
+     * @return None.
+     ********************************************************************/
     public void add(Auto s) {
         //  Order is: (First) List all Cars in bought by date order
         //  followed by (second) List all Trucks in bought by order.'
@@ -66,8 +107,13 @@ public class MySingleLinkedList implements Serializable
         }
     }
 
-
-
+    /*********************************************************************
+     * Removes a vehicle from the list based on index chosen.
+     *
+     * @param index Specifies which vehicle to remove.
+     * @return Null Top is either null or index is out of range.
+     * @return get() Returns the vehicle that was removed from the list.
+     ********************************************************************/
     public Auto remove(int index) {
         //Case 0: No list
         if (top == null)
@@ -92,6 +138,15 @@ public class MySingleLinkedList implements Serializable
         return get(index-1);
     }
 
+    /*********************************************************************
+     * Retrieves the information of a vehicle from the list based on
+     * index specified.
+     *
+     * @param index Vehicle to retrieve information for.
+     * @throws IndexOutOfBoundsException if index is invalid.
+     * @return null Returns null if there is no list.
+     * @return temp.getData() Returns information about specified vehicle
+     ********************************************************************/
     public Auto get(int index) {
         if(top == null)
             return null;
@@ -105,20 +160,19 @@ public class MySingleLinkedList implements Serializable
         }
     }
 
+    /*********************************************************************
+     * Inserts the data from the list into a string.
+     *
+     * @return list String containing contents of list.
+     ********************************************************************/
     public String toString() {
         String list = "";
+        Node temp = top;
+        while (temp != null) {
+            list = list + "\n" + temp.getData();
+            temp = temp.getNext();
+        }
 
         return list;
     }
-
-    public void display(){
-        Node temp = top;
-        System.out.println("------------------------");
-        while (temp != null) {
-            System.out.println(temp.getData());
-            temp = temp.getNext();
-        }
-    }
-
-
 }

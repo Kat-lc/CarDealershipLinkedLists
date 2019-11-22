@@ -207,10 +207,8 @@ public class MySingleLinkedListTest {
 
     @Test
     public void remove() {
-        list.display();
         assertEquals("Focus", list.get(0).getAutoName());
         list.remove(0);
-        list.display();
         assertEquals("Outback", list.get(0).getAutoName());
         list.remove(0);
         assertEquals("Chevy", list.get(0).getAutoName());
@@ -219,32 +217,23 @@ public class MySingleLinkedListTest {
         assertEquals("F150", list.get(1).getAutoName());
         list.remove(1);
         assertEquals("F350", list.get(1).getAutoName());
-        list.display();
 
         createList();
-        list.display();
         assertEquals("F250", list.get(4).getAutoName());
         list.remove(4);
         assertEquals("F150", list.get(4).getAutoName());
-        list.display();
         list.remove(5);
         assertEquals("F350", list.get(5).getAutoName());
-        list.display();
         list.remove(3);
         assertEquals("F150", list.get(3).getAutoName());
-        list.display();
         list.remove(1);
         assertEquals("Chevy", list.get(1).getAutoName());
-        list.display();
         list.remove(2);
         assertEquals("F350", list.get(2).getAutoName());
-        list.display();
         list.remove(0);
         assertEquals("Chevy", list.get(0).getAutoName());
-        list.display();
         list.remove(0);
         assertEquals("F350", list.get(0).getAutoName());
-        list.display();
         list.remove(0);
         assertEquals(0, list.size());
     }
