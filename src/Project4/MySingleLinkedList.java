@@ -184,4 +184,8 @@ public class MySingleLinkedList<E extends Auto> implements Serializable
 
         return list;
     }
+
+    public void complexUndo(){
+
+    }
 }
