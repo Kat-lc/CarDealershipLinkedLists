@@ -266,12 +266,15 @@ public class MySingleLinkedListTest {
         assertEquals(list.get(-1), null);
     }
 
+    // Tests for empty toString
     @Test
     public void toStringTest() {
         list.clear();
         String expected = "";
         assertEquals(list.toString(), expected);
     }
+
+    // Tests for a toString with an element added
     @Test
     public void toStringTest2() {
         list.clear();

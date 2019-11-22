@@ -71,36 +71,42 @@ public class MySingleLinkedList<E extends Auto> implements Serializable
      * @param s The vehicle to add to the list.
      * @return None.
      ********************************************************************/
-    public <s extends Auto> void add(E s) {
+    public void add(E s) {
         //  Order is: (First) List all Cars in bought by date order
-        //  followed by (second) List all Trucks in bought by order.'
+        //  followed by (second) List all Trucks in bought by order.
+
         // Case 0: List doesn't exist, tail and top point to new node containing 's'
         if (top == null)
             tail = top = new GNode<E>(s, null);
-            //Case 1: If 's' is a car
+        //Case 1: If 's' is a car
         else if (s instanceof Car) {
             GNode<E> temp = top;
+            // Iterates through the cars, breaks when it is at the right spot to insert or until next is type Truck.
             while (temp.getNext() != null && temp.getNext().getData() instanceof Car)
                 if (temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) < 0)
                     temp = temp.getNext();
                 else
                     break;
+            // Checks if s is the only element of type Car
             if (temp == top &&  temp.getData() instanceof Truck)
                 top = new GNode<E>(s, top);
+            // If not, it checks if top's boughtDate is earlier than s
             else if(temp == top && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
                 top = new GNode<E>(s, top);
             else
                 temp.setNext(new GNode<E>(s, temp.getNext()));
-            // Case 2: If 's' is a Truck
+        // Case 2: If 's' is a Truck
         } else {
             GNode<E> temp = top;
             while(temp.getNext() != null) {
-                if(temp.getNext().getData() instanceof Truck && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
+                if(temp.getNext().getData() instanceof Truck &&
+                        temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
                     break;
                 else
                     temp = temp.getNext();
             }
-            if(temp == top && temp.getData() instanceof Truck && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
+            if(temp == top && temp.getData() instanceof Truck &&
+                    temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
                 top = new GNode<E>(s, top);
             else
                 temp.setNext(new GNode<E>(s, temp.getNext()));

@@ -6,6 +6,8 @@ import java.io.Serializable;
  * A car dealership program that allows you to purchase vehicles for
  * your inventory and sell to customers. This program utilizes Linked
  * Lists for storing of inventory.
+ * This class is a generic version of the Node class. Instead of
+ * using type Auto, it uses generic 'E' as a type placeholder.
  *
  * @author Katie Cussans, Jason Kaip
  * @version Fall 2019
@@ -13,7 +15,7 @@ import java.io.Serializable;
 
 public class GNode<E> implements Serializable {
     /**
-     * Variable to contain vehicle information
+     * Variable to contain object  information
      */
     private E data;
 
@@ -26,7 +28,7 @@ public class GNode<E> implements Serializable {
      * Constructor initializes defines instance variables with given
      * parameters.
      *
-     * @param data Information about vehicle.
+     * @param data Information about object .
      * @param next Node containing the next element in the list.
      * @return None.
      ********************************************************************/
@@ -36,18 +38,18 @@ public class GNode<E> implements Serializable {
     }
 
     /*********************************************************************
-     * Retrieves the information about a vehicle.
+     * Retrieves the information about an object .
      *
-     * @return data Information about vehicle.
+     * @return data Information about object .
      ********************************************************************/
     public E getData() {
         return data;
     }
 
     /*********************************************************************
-     * Sets the characteristics of a vehicle.
+     * Sets the characteristics of an object .
      *
-     * @param data Information to modify vehicle.
+     * @param data Information to modify object .
      * @return None.
      ********************************************************************/
     public void setData(E data) {
