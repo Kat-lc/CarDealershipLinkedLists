@@ -201,9 +201,9 @@ public class MySingleLinkedListTest {
         assertEquals(list.get(5), truck3);
     }
 
-    @Test
-    public void reOrderList() {
-    }
+//    @Test
+//    public void reOrderList() {
+//    }
 
     //Tests remove() and verifies the specified element is replaced with the next
     @Test
@@ -244,10 +244,16 @@ public class MySingleLinkedListTest {
 
     //Tests remove() to verify exception is thrown if invalid index is entered.
     @Test (expected = IndexOutOfBoundsException.class)
-    public void testRemoveException(){
+    public void testRemoveException1(){
         list.remove(1);
         assertEquals("Chevy", list.get(1).getAutoName());
         list.remove(5);
+    }
+
+    //Tests remove() to verify exception is thrown if invalid index is entered.
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void testRemoveException2(){
+        list.remove(-1);
     }
 
     // Checks if list is empty
@@ -264,6 +270,12 @@ public class MySingleLinkedListTest {
         list.add(car1);
 
         assertEquals(list.get(-1), null);
+    }
+
+    //Simple test to verify get() retrieves correct element.
+    @Test
+    public void get2() {
+        assertEquals("Focus", list.get(0).getAutoName());
     }
 
     // Tests for empty toString
