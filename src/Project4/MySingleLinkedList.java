@@ -91,7 +91,7 @@ public class MySingleLinkedList implements Serializable
                 top = new Node(s, top);
             else
                 temp.setNext(new Node(s, temp.getNext()));
-            // C+.ase 2: If 's' is a Truck
+            // Case 2: If 's' is a Truck
         } else {
             Node temp = top;
             while(temp.getNext() != null) {
@@ -121,7 +121,7 @@ public class MySingleLinkedList implements Serializable
 
         //Case 1: Out of range
         if (index < 0 || index >= size())
-            return null;
+            throw new IndexOutOfBoundsException();
 
         //Case 2: Removes top element
         if (index == 0) {
@@ -148,10 +148,13 @@ public class MySingleLinkedList implements Serializable
      * @return temp.getData() Returns information about specified vehicle
      ********************************************************************/
     public Auto get(int index) {
+        //Case 0: No list
         if(top == null)
             return null;
+        //Case 1: index out of bounds
         else if(index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
+        //Case 2: List exists
         else {
             Node temp = top;
             for(int i = 0; i < index; i++)
