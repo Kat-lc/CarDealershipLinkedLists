@@ -91,7 +91,7 @@ public class MySingleLinkedList<E extends Auto> implements Serializable
                 top = new GNode<E>(s, top);
             else
                 temp.setNext(new GNode<E>(s, temp.getNext()));
-            // C+.ase 2: If 's' is a Truck
+            // Case 2: If 's' is a Truck
         } else {
             GNode<E> temp = top;
             while(temp.getNext() != null) {
@@ -121,7 +121,7 @@ public class MySingleLinkedList<E extends Auto> implements Serializable
 
         //Case 1: Out of range
         if (index < 0 || index >= size())
-            return null;
+            throw new IndexOutOfBoundsException();
 
         //Case 2: Removes top element
         if (index == 0) {
@@ -148,10 +148,13 @@ public class MySingleLinkedList<E extends Auto> implements Serializable
      * @return temp.getData() Returns information about specified vehicle
      ********************************************************************/
     public E get(int index) {
+        //Case 0: No list
         if(top == null)
             return null;
+            //Case 1: index out of bounds
         else if(index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
+            //Case 2: List exists
         else {
             GNode<E> temp = top;
             for(int i = 0; i < index; i++)
