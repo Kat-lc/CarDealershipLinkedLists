@@ -178,7 +178,12 @@ public class GUICarDealer extends JFrame implements ActionListener {
         }
 
         if(undo == e.getSource()){
-            new GUICarDealer();
+            while(DList.getSize() > 0) {
+                int i = 0;
+                while(DList.getSize() > 0) {
+                    DList.remove(i);
+                }
+            }
         }
     }
 
