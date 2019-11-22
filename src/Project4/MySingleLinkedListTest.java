@@ -24,7 +24,6 @@ public class MySingleLinkedListTest {
 
     @Before
     public void createList() {
-
         SimpleDateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         GregorianCalendar temp1 = new GregorianCalendar();
         GregorianCalendar temp2 = new GregorianCalendar();
@@ -48,19 +47,19 @@ public class MySingleLinkedListTest {
             temp6.setTime(d6);
 
 
-            Car Car1 = new Car (temp1, "Outback", 18000,"LX", false);
-            Car Car2 = new Car (temp2, "Chevy", 11000,"EX", false);
-            Car Car3 = new Car (temp3, "Focus", 19000,"EX", true);
-            Truck Truck1 = new Truck(temp4,"F150",12000,"LX",false);
-            Truck Truck2 = new Truck(temp5,"F250",42000,"LX",false);
-            Truck Truck3 = new Truck(temp1,"F350",2000,"EX",true);
+            car1 = new Car (temp1, "Outback", 18000,"LX", false);
+            car2 = new Car (temp2, "Chevy", 11000,"EX", false);
+            car3 = new Car (temp3, "Focus", 19000,"EX", true);
+            truck1 = new Truck(temp4,"F150",12000,"LX",false);
+            truck2 = new Truck(temp5,"F250",42000,"LX",false);
+            truck3 = new Truck(temp6,"F350",2000,"EX",true);
 
-            list.add(Car1);
-            list.add(Car2);
-            list.add(Car3);
-            list.add(Truck1);
-            list.add(Truck2);
-            list.add(Truck3);
+            list.add(car1);
+            list.add(car2);
+            list.add(car3);
+            list.add(truck1);
+            list.add(truck2);
+            list.add(truck3);
 
 
         } catch (ParseException e) {
@@ -68,9 +67,8 @@ public class MySingleLinkedListTest {
         }
     }
 
-
     @Test
-    // here is the very small example to use.
+    // here is the very small example to use. Tests size
     public void size() {
         assertEquals(6, list.size());
         createList();
@@ -93,16 +91,114 @@ public class MySingleLinkedListTest {
         list.remove(0);
         list.remove(0);
         assertEquals(0, list.size());
-
-
     }
 
     @Test
     public void clear() {
+        assertEquals(6, list.size());
+        list.clear();
+        assertEquals(0, list.size());
+
+        list.add(truck1);
+        list.add(car1);
+
+        assertEquals(2, list.size());
     }
 
+    // Checks if top of this list is a car, not the truck
     @Test
     public void add() {
+        list.clear();
+        list.add(truck1);
+        list.add(car1);
+        assertEquals(list.get(0), car1);
+    }
+
+    //Checks if truck2 is inserted at top in list of trucks
+    @Test
+    public void add2() {
+        list.clear();
+        list.add(truck1);
+        list.add(truck2);
+        assertEquals(list.get(0), truck2);
+    }
+
+    //Checks if car1 is inserted at top in list of cars
+    @Test
+    public void add3() {
+        list.clear();
+        list.add(car2);
+        list.add(car1);
+        assertEquals(list.get(0), car1);
+    }
+
+    // Check if truck1 is inserted in between truck2 and truck 3
+    @Test
+    public void add4() {
+        list.clear();
+        list.add(truck2);
+        list.add(truck3);
+        list.add(truck1);
+        System.out.println(list.size());
+        assertEquals(list.get(1), truck1);
+    }
+
+    // Check if truck3 is inserted at the bottom
+    @Test
+    public void add5() {
+        list.clear();
+        list.add(truck2);
+        list.add(truck3);
+        list.add(truck1);
+        System.out.println(list.size());
+        assertEquals(list.get(2), truck3);
+    }
+
+    // Check if car1 is inserted between car2 and car3
+    @Test
+    public void add6() {
+        list.clear();
+        list.add(car1);
+        list.add(car2);
+        list.add(car3);
+        System.out.println(list.size());
+        assertEquals(list.get(1), car1);
+    }
+
+    // Check if car2 is inserted at the bottom
+    @Test
+    public void add7() {
+        list.clear();
+        list.add(car1);
+        list.add(car2);
+        list.add(car3);
+        System.out.println(list.size());
+        assertEquals(list.get(2), car2);
+    }
+
+    // Contains multiple tests for a list of both cars and trucks
+    @Test
+    public void add8() {
+        list.clear();
+        list.add(car1);
+        list.add(car2);
+        list.add(car3);
+        list.add(truck2);
+        list.add(truck3);
+        list.add(truck1);
+        System.out.println(list.size());
+
+        // Checks if car3 is on the top of TRUCK's list
+        assertEquals(list.get(0), car3);
+
+        // Checks if truck2 is on the top of TRUCK's list
+        assertEquals(list.get(3), truck2);
+
+        // Checks if car2 is on bottom of CAR's list
+        assertEquals(list.get(2), car2);
+
+        // Checks if truck3 is on bottom of CAR's list
+        assertEquals(list.get(5), truck3);
     }
 
     @Test

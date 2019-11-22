@@ -27,7 +27,7 @@ public class MySingleLinkedList implements Serializable
 
     public void clear () {
         top = null;
-        size = 0;
+        this.size = 0;
     }
 
     public void add(Auto s) {
@@ -50,7 +50,7 @@ public class MySingleLinkedList implements Serializable
                 top = new Node(s, top);
             else
                 temp.setNext(new Node(s, temp.getNext()));
-            // Case 2: If 's' is a Truck
+            // C+.ase 2: If 's' is a Truck
         } else {
             Node temp = top;
             while(temp.getNext() != null) {
@@ -59,7 +59,7 @@ public class MySingleLinkedList implements Serializable
                 else
                     temp = temp.getNext();
             }
-            if(temp == top && temp.getData() instanceof Truck)
+            if(temp == top && temp.getData() instanceof Truck && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
                 top = new Node(s, top);
             else
                 temp.setNext(new Node(s, temp.getNext()));
