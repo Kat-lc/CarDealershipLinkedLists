@@ -11,17 +11,17 @@ import java.io.Serializable;
  * @version Fall 2019
  ********************************************************************/
 
-public class MySingleLinkedList implements Serializable
+public class MySingleLinkedList<E extends Auto> implements Serializable
 {
     /**
      * Node that always points to top of the list.
      */
-    private Node top;
+    private GNode<E> top;
 
     /**
      * Node that always points to bottom of list.
      */
-    private Node tail;
+    private GNode<E> tail;
 
     /**
      * Size of Linked List
@@ -46,7 +46,7 @@ public class MySingleLinkedList implements Serializable
      ********************************************************************/
     public int size() {
         int count = 0;
-        Node temp = top;
+        GNode<E> temp = top;
         while(temp != null) {
             count++;
             temp = temp.getNext();
@@ -71,29 +71,29 @@ public class MySingleLinkedList implements Serializable
      * @param s The vehicle to add to the list.
      * @return None.
      ********************************************************************/
-    public void add(Auto s) {
+    public <s extends Auto> void add(E s) {
         //  Order is: (First) List all Cars in bought by date order
         //  followed by (second) List all Trucks in bought by order.'
         // Case 0: List doesn't exist, tail and top point to new node containing 's'
         if (top == null)
-            tail = top = new Node(s, null);
+            tail = top = new GNode<E>(s, null);
             //Case 1: If 's' is a car
         else if (s instanceof Car) {
-            Node temp = top;
+            GNode<E> temp = top;
             while (temp.getNext() != null && temp.getNext().getData() instanceof Car)
                 if (temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) < 0)
                     temp = temp.getNext();
                 else
                     break;
             if (temp == top &&  temp.getData() instanceof Truck)
-                top = new Node(s, top);
+                top = new GNode<E>(s, top);
             else if(temp == top && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
-                top = new Node(s, top);
+                top = new GNode<E>(s, top);
             else
-                temp.setNext(new Node(s, temp.getNext()));
+                temp.setNext(new GNode<E>(s, temp.getNext()));
             // C+.ase 2: If 's' is a Truck
         } else {
-            Node temp = top;
+            GNode<E> temp = top;
             while(temp.getNext() != null) {
                 if(temp.getNext().getData() instanceof Truck && temp.getNext().getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
                     break;
@@ -101,9 +101,9 @@ public class MySingleLinkedList implements Serializable
                     temp = temp.getNext();
             }
             if(temp == top && temp.getData() instanceof Truck && temp.getData().getBoughtOn().compareTo(s.getBoughtOn()) > 0)
-                top = new Node(s, top);
+                top = new GNode<E>(s, top);
             else
-                temp.setNext(new Node(s, temp.getNext()));
+                temp.setNext(new GNode<E>(s, temp.getNext()));
         }
     }
 
@@ -114,7 +114,7 @@ public class MySingleLinkedList implements Serializable
      * @return Null Top is either null or index is out of range.
      * @return get() Returns the vehicle that was removed from the list.
      ********************************************************************/
-    public Auto remove(int index) {
+    public E remove(int index) {
         //Case 0: No list
         if (top == null)
             return null;
@@ -130,7 +130,7 @@ public class MySingleLinkedList implements Serializable
         }
 
         //Case 3: Removes at index
-        Node temp = top;
+        GNode<E> temp = top;
         for (int i = 0; i < index - 1; i++)
             temp = temp.getNext();
 
@@ -147,13 +147,13 @@ public class MySingleLinkedList implements Serializable
      * @return null Returns null if there is no list.
      * @return temp.getData() Returns information about specified vehicle
      ********************************************************************/
-    public Auto get(int index) {
+    public E get(int index) {
         if(top == null)
             return null;
         else if(index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         else {
-            Node temp = top;
+            GNode<E> temp = top;
             for(int i = 0; i < index; i++)
                 temp = temp.getNext();
             return temp.getData();
@@ -167,7 +167,7 @@ public class MySingleLinkedList implements Serializable
      ********************************************************************/
     public String toString() {
         String list = "";
-        Node temp = top;
+        GNode<E> temp = top;
         while (temp != null) {
             list = list + "\n" + temp.getData();
             temp = temp.getNext();
